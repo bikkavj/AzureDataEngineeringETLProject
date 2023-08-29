@@ -1,0 +1,22 @@
+{
+	"name": "on_prem_sqlserver_to_cloud",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Data Source=BIKKA-VJ\\SQLEXPRESS;Initial Catalog=AdventureWorksLT2017;User ID=bikkavj",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "password1"
+			}
+		},
+		"connectVia": {
+			"referenceName": "selfhostIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
