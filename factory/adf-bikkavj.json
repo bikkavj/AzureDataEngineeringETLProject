@@ -1,0 +1,9 @@
+{
+	"name": "adf-bikkavj",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "5540b64e-a713-4f27-ad29-c3a80ad2605d",
+		"tenantId": "704d822c-358a-4784-9a16-49e20b75f941"
+	}
+}
