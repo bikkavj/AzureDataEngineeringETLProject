@@ -1,0 +1,12 @@
+{
+	"name": "SqlServer_copy_dynamic",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "on_prem_sqlserver_to_cloud",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}
