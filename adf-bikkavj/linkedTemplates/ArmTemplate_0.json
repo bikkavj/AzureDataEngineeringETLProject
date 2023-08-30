@@ -365,7 +365,7 @@
 							{
 								"activity": "Look for all tables",
 								"dependencyConditions": [
-									"Completed"
+									"Succeeded"
 								]
 							}
 						],
@@ -443,6 +443,60 @@
 								}
 							]
 						}
+					},
+					{
+						"name": "Bronze to Silver",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "ForEach_SchemaTable",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Repos/Azuredatabricks_repo/AzureDataEngineeringETLProject/databricks_repo/bronze_to_silver_L1Transform"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Silver to Gold",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "Bronze to Silver",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Repos/Azuredatabricks_repo/AzureDataEngineeringETLProject/databricks_repo/silver_to_gold_dbk_L2Transform"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
 					}
 				],
 				"policy": {
@@ -453,6 +507,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/sqlDBTables')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureDatabricks1')]",
 				"[concat(variables('factoryId'), '/datasets/SqlServer_copy_dynamic')]",
 				"[concat(variables('factoryId'), '/datasets/Parquet_Tables')]"
 			]
