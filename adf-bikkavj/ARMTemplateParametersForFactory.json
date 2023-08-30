@@ -14,6 +14,9 @@
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://bikkavjdatalakegen2.dfs.core.windows.net/"
 		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"value": "0830-180008-bsjcnvv"
+		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"value": "https://bikkavj-kv.vault.azure.net/"
 		}
