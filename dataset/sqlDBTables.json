@@ -1,0 +1,12 @@
+{
+	"name": "sqlDBTables",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "on_prem_sqlserver_to_cloud",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}
