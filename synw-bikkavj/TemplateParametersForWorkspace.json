@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "synw-bikkavj"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"on_prem_sqlserver_to_cloud_connectionString": {
+			"value": "Integrated Security=False;Data Source=BIKKA-VJ\\SQLEXPRESS;Initial Catalog=AdventureWorksLT2017;User ID=bikkavj"
+		},
+		"synw-bikkavj-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synw-bikkavj.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://bikkavjdatalakegen2.dfs.core.windows.net/"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://bikkavj-kv.vault.azure.net/"
+		},
+		"synw-bikkavj-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://bikkavjdatalakegen2.dfs.core.windows.net"
+		}
+	}
+}
