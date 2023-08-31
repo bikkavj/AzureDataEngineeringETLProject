@@ -1,5 +1,5 @@
 {
-	"name": "synwPipeline1",
+	"name": "createViewSynPipeline1",
 	"properties": {
 		"activities": [
 			{
@@ -24,6 +24,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
