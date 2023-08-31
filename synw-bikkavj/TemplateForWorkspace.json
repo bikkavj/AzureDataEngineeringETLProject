@@ -16,6 +16,11 @@
 			"metadata": "Secure string for 'connectionString' of 'on_prem_sqlserver_to_cloud'",
 			"defaultValue": "Integrated Security=False;Data Source=BIKKA-VJ\\SQLEXPRESS;Initial Catalog=AdventureWorksLT2017;User ID=bikkavj"
 		},
+		"serverless_SQl_DB_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'serverless_SQl_DB'",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=synw-bikkavj-ondemand.sql.azuresynapse.net;Initial Catalog=gold_db"
+		},
 		"synw-bikkavj-WorkspaceDefaultSqlServer_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'synw-bikkavj-WorkspaceDefaultSqlServer'",
@@ -577,6 +582,25 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('workspaceName'), '/serverless_SQl_DB')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('serverless_SQl_DB_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('workspaceName'), '/synw-bikkavj-WorkspaceDefaultSqlServer')]",
 			"type": "Microsoft.Synapse/workspaces/linkedServices",
 			"apiVersion": "2019-06-01-preview",
@@ -660,7 +684,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('workspaceName'), '/syn_procedure')]",
+			"name": "[concat(parameters('workspaceName'), '/store_procedure')]",
 			"type": "Microsoft.Synapse/workspaces/sqlscripts",
 			"apiVersion": "2019-06-01-preview",
 			"properties": {

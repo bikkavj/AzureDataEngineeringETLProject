@@ -11,6 +11,9 @@
 		"on_prem_sqlserver_to_cloud_connectionString": {
 			"value": "Integrated Security=False;Data Source=BIKKA-VJ\\SQLEXPRESS;Initial Catalog=AdventureWorksLT2017;User ID=bikkavj"
 		},
+		"serverless_SQl_DB_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=synw-bikkavj-ondemand.sql.azuresynapse.net;Initial Catalog=gold_db"
+		},
 		"synw-bikkavj-WorkspaceDefaultSqlServer_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synw-bikkavj.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
