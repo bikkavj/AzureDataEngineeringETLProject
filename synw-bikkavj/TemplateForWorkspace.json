@@ -302,7 +302,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('workspaceName'), '/synwPipeline1')]",
+			"name": "[concat(parameters('workspaceName'), '/createViewSynPipeline1')]",
 			"type": "Microsoft.Synapse/workspaces/pipelines",
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
@@ -822,6 +822,24 @@
 					"resultLimit": 5000
 				},
 				"type": "SqlQuery"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/SQL script 1')]",
+			"type": "Microsoft.Synapse/workspaces/sqlscripts",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"content": {
+					"query": "SELECT TOP (100) [Address_ID]\n,[Address_Line1]\n,[Address_Line2]\n,[City]\n,[State_Province]\n,[Country_Region]\n,[Postal_Code]\n,[rowguid]\n,[Modified_Date]\n FROM [dbo].[address]",
+					"metadata": {
+						"language": "sql"
+					},
+					"currentConnection": {
+						"databaseName": "gold_db",
+						"poolName": "Built-in"
+					}
+				}
 			},
 			"dependsOn": []
 		}
